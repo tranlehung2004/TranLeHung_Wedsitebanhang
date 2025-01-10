@@ -1,0 +1,87 @@
+﻿    @model IEnumerable<Wedsitebanhang.Context.Product>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/adminLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category_id)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.isOnSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category_id)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.isOnSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type_id)
+        </td>
+        <td class="text-center">
+            <a href="#" class="btn btn-sm btn-success">
+                <i class="fas fa-toggle-on"></i>
+            </a>
+            <a href="@Url.Action("Detail", "ProductAdmin", new {id=item.id})" class="btn btn-sm btn-info">
+                <i class="far fa-eye"></i>
+            </a>
+            <a href="@Url.Action("Edit", "ProductAdmin", new {id=item.id})" class="btn btn-sm btn-primary">
+                <i class="far fa-edit"></i>
+            </a>
+            <a href="@Url.Action("Delete", "ProductAdmin", new {id=item.id})" class="btn btn-sm btn-danger">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
